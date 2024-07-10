@@ -35,9 +35,7 @@ def player_move():
     else:
         board[spot] = current_player
 
-    print(avail_spots)
     avail_spots.remove(spot)
-    print(avail_spots)
 
     print()
     print("here is the updated board:")
@@ -67,7 +65,6 @@ def check_for_wins(a = board):
         else:
             winner = "BOT"
         return True
-    print("checked columns")
     #checking rows
     if a[0] == a[1] == a[2] and a[0] != "_" and a[1] != "_" and a[2] != "_":
         if a[0] == "X":
@@ -89,7 +86,6 @@ def check_for_wins(a = board):
         else:
             winner = "BOT"
         return True
-    print("checked rows")
     #checking diagnols
     if a[0] == a[4] == a[8] and a[0] != "_" and a[4] != "_" and a[8] != "_":
         if a[0] == "X":
@@ -104,14 +100,12 @@ def check_for_wins(a = board):
         else:
             winner = "BOT"
         return True
-    print("checked diagnols")
     print()
 
 def bot_move():
     global board
     testboard = board.copy()
     m = None
-    print("thinking")
     for x in avail_spots:
         testboard[x] = "O"
         if check_for_wins(testboard) != None:
@@ -122,15 +116,11 @@ def bot_move():
         board[m] = "O"          
     elif m == None:
         m = random.choice(avail_spots)
-    print("decided")
     board[m] = "O"
 
-    print(avail_spots)
     avail_spots.remove(m)
-    print(avail_spots)
 
     display()
-    print("made my move!")
 
 def check_for_tie():
     if len(avail_spots)==0:
@@ -141,7 +131,6 @@ def check_for_tie():
 def play():
     global game_in_play
     display()
-    print("s1")
     print()
     while game_in_play:
         player_move()
