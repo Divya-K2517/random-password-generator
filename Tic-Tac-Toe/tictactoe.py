@@ -128,7 +128,7 @@ def check_for_tie():
 
 
 
-def play():
+def play(): #master function
     global game_in_play
     display()
     print()
